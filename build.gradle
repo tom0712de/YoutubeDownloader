@@ -1,0 +1,19 @@
+plugins {
+
+    id 'java'
+    id 'application'
+ 
+
+}
+application {
+    mainClass = 'Main'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.felipeucelli:javatube:-SNAPSHOT'
+}

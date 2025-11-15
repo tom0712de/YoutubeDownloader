@@ -1,9 +1,17 @@
+import java.net.URL;
+
 import com.github.felipeucelli.javatube.Youtube;
+
+import java.util.Scanner;
 public class Main{
 
 
 public static void main(String[] args) throws Exception {
-    Youtube yt = new Youtube("https://www.youtube.com/watch?v=2lAe1cqCOXo");
+    Scanner URLscanner = new Scanner(System.in);
+    System.out.println("Enter video URl");
+    String videoUrl = URLscanner.nextLine();
+    Youtube yt = new Youtube(videoUrl);
     yt.streams().getHighestResolution().download();
+    
 }
 }

@@ -17,3 +17,11 @@ repositories {
 dependencies {
     implementation 'com.github.felipeucelli:javatube:-SNAPSHOT'
 }
+// Source - https://stackoverflow.com/a
+// Posted by Humberto Pinheiro, modified by community. See post 'Timeline' for change history
+// Retrieved 2025-11-15, License - CC BY-SA 4.0
+
+run {
+    standardInput = System.in
+}
+

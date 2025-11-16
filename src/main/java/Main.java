@@ -4,7 +4,7 @@ import com.github.felipeucelli.javatube.Youtube;
 
 import java.util.Scanner;
 public class Main{
-
+// Klasse nur aus Debuggründen 
 
 public static void main(String[] args) throws Exception {
     Scanner URLscanner = new Scanner(System.in);

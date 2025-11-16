@@ -1,6 +1,7 @@
-
+./gradlew wrapper --gradle-version latest --> upgrade Wrapper 
 ./gradlew run --> run (auf windows evt anders Gh codespaces benutzt bash also sollte da passen)
 
 Javatube docs https://deepwiki.com/felipeucelli/JavaTube/2.1-installation-and-dependencies
 einfacher https://github.com/felipeucelli/JavaTube?tab=readme-ov-file
 
+Better path for config.properties

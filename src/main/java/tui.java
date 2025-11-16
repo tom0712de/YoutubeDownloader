@@ -1,4 +1,8 @@
 import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+
+
 
 import com.github.felipeucelli.javatube.Youtube;
 
@@ -14,13 +18,22 @@ public class tui {
         }
 
     }
+    public static Properties getSettings() throws Exception{
+        FileReader reader = new FileReader("src/main/java/config.properties");
+        Properties Settings = new Properties();
+        Settings.load(reader);
+        return Settings;
+
+   
+    }
     public static void Download() throws Exception{
         
         System.out.println("Video Url eingeben");
         String videoURL = inputScan.nextLine();
         Youtube yt = new Youtube(videoURL);
-        yt.streams().getHighestResolution().download();
+        String DLpath = getSettings().getProperty("DLpath");
+        yt.streams().getHighestResolution().download(DLpath);
         
-    } 
+    }
     
 }

@@ -1,4 +1,4 @@
-import java.net.URL;
+
 
 import com.github.felipeucelli.javatube.Youtube;
 
@@ -14,4 +14,5 @@ public static void main(String[] args) throws Exception {
     yt.streams().getHighestResolution().download();
     
 }
+
 }

@@ -7,7 +7,7 @@ import java.io.*;
 import com.github.felipeucelli.javatube.Youtube;
 
 public class tui {
-    private static Scanner inputScan = new Scanner(System.in);
+    private static Scanner inputScan = new Scanner(System.in); 
     public static void main(String[] args) throws Exception {
         
         System.out.println("Type 1 for download Video");
@@ -35,5 +35,6 @@ public class tui {
         yt.streams().getHighestResolution().download(DLpath);
         
     }
+    
     
 }

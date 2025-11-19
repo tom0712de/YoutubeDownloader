@@ -5,3 +5,7 @@ Javatube docs https://deepwiki.com/felipeucelli/JavaTube/2.1-installation-and-de
 einfacher https://github.com/felipeucelli/JavaTube?tab=readme-ov-file
 
 Better path for config.properties
+
+
+Die Klassen HomeScreen erstellen ein Panel was dann in der Main Klasse dem Fenster hinzugefüggt werden kann. Dadurch lässt sich sehr leicht zwischen z.B HomeScreen und Settings wechseln ohne ein Neues Fenster zu machen
+Ein Pannel ist eine Ansammlung von Elementen(Knopf TextFeld etc), die zu einem Fenster hinzugefügt werden kann.

@@ -7,6 +7,8 @@ public class main{
     mainFrame.add(G.getPanel());
     mainFrame.setSize(300,300);
     mainFrame.show();
-
-  } 
+    while(g.isAlive){
+    }
+    mainFrame.getContentPane().removeAll();
+  }
 }

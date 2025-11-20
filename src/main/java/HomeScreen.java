@@ -1,53 +1,68 @@
-import java.awt.event.ActionListener;
-
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
+
+import java.awt.GridLayout;
 import java.awt.event.*;
 
+import com.github.felipeucelli.javatube.StreamQuery;
 import com.github.felipeucelli.javatube.Youtube;
+
+import com.github.felipeucelli.javatube.*;
+
 
 public class HomeScreen{
     
     JPanel p = new JPanel();
-    
-    public Properties getSettings() throws Exception{
-        FileReader reader = new FileReader("src/main/java/config.properties");
+    boolean isAlive = true;
+    public Properties getSettings() throws Exception{ FileReader reader = new FileReader("src/main/java/config.properties");
         Properties Settings = new Properties();
         Settings.load(reader);
         return Settings;
     }
-
+    public void Destroy() throws Exception{
+        isAlive = false;
+    }
     public void Download(String videoURL) throws Exception{
         Youtube yt = new Youtube(videoURL);
         String DLpath = getSettings().getProperty("DLpath");
-        yt.streams().getHighestResolution().download(DLpath);
+        //yt.streams().getHighestResolution().download(DLpath);
+        yt.streams().getOnlyAudio().download(DLpath);
+        
+
     }
 
     HomeScreen(){
-        //alle Elemente werden deklariert  
-        JFrame HomeWin = new JFrame();
-        JButton DLbtn = new JButton("Download");
+        //alle Elemente werden deklariert 
+        p.setLayout(new GridLayout(4,4));
+        JButton DLbtn = new JButton("Download");  
         JCheckBox PlaylistCheck = new JCheckBox("Download entire Playlist");
         JTextField URlinput = new JTextField(8);
-        
+        JButton Settingsbtn = new JButton("GoSetting"); 
+
         // Den Knöpfen werden Methoden zu gewiesen
         DLbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
                 Download(URlinput.getText());
-                } catch (Exception ex){
+                } catch (Exception ex) {
                   System.out.println("Something went wrong trying to download ");
                 }
             }
         });
+        Settingsbtn.addActionListener(new ActonListener(){
+          @override
+            public void actioPerformed(ActionEvent e){
+              try{
+                Destroy();
+              }catch (Exeception e){
+                System.out.print("Error while going Setting");
+              }   
+        }});
 
-        
-        p.add(DLbtn);
+        p.add(Settingsbtn);
+        p.add(DLbtn); 
         p.add(PlaylistCheck);
         p.add(URlinput);
         

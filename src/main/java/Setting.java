@@ -16,6 +16,7 @@ public class Setting{
     try(FileWriter writer = new FileWriter("src/main/java/config.properties")){
       Settings.setProperty("DLpath", DLpath.getText());
      // add func to write to file writer.write(Settings);
+      p.store(writer,"");
 
     }catch(IOException e){
       System.out.println("error trying to save settings");

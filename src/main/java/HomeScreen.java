@@ -16,11 +16,9 @@ public class HomeScreen{
     JPanel URlbar = new JPanel();
     JPanel empty = new JPanel();
     JPanel bottom = new JPanel();
+    JPanel p = new JPanel ();
 
 
-
-    JCheckBox AudioCheck = new JCheckBox("only download Audio");
-    JPanel p = new JPanel();
     boolean isAlive = true;
     public Properties getSettings() throws Exception{ FileReader reader = new FileReader("src/main/java/config.properties");
         Properties Settings = new Properties();
@@ -32,15 +30,23 @@ public class HomeScreen{
 
         
         Youtube yt = new Youtube(videoURL);
+        
         String DLpath = getSettings().getProperty("DLpath");
-      if(AudioCheck.isSelected()){
+        String Choice = getSettings().getProperty("Format");
+        if(Choice == "onlyAudio"){
           yt.streams().getOnlyAudio().download(DLpath);
         }
-        else{
+        if(Choice == "360p audio and video"){
+          yt.streams().getDefaultResolution().download(DLpath);
+        }
+        if(Choice == "video and music speratly highest Quality"){
+        
           yt.streams().getOnlyAudio().download(DLpath);
           yt.streams().getHighestResolution().download(DLpath);
         }
-
+        else{
+          System.out.print("TS broken FR");
+        }
     
     }
 
@@ -63,7 +69,6 @@ public class HomeScreen{
         });
         
         p.add(DLbtn); 
-        p.add(AudioCheck);
         p.add(URlinput);
         
     }

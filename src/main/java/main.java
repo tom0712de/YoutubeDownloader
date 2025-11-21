@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class main{
   public static void main(String[] args) throws Exception{
-    JFrame mainFrame = new JFrame();
+    JFrame mainFrame = new JFrame("Youtube Downloader");
     mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //get The Homescreen Panel from Homescreen
     HomeScreen G = new HomeScreen();

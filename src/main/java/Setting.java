@@ -35,30 +35,30 @@ public class Setting{
   public Setting(){
     
 
-  //Setup Format dropdown
-  String [] Choices = {"360p audio and video","video and music seperatly highest Quality"};
-  JComboBox<String> CBFormat = new JComboBox(Choices);
-  JButton FormatBtn = new JButton("confirm");
-  //Formatp.setLayout(new FlowLayout());
-  Formatp.add(CBFormat);
-  Formatp.add(FormatBtn);
+    //Setup Format dropdown
+    String [] Choices = {"360p audio and video","video and music seperatly highest Quality","onlyAudio"};
+    JComboBox<String> CBFormat = new JComboBox(Choices);
+    JButton FormatBtn = new JButton("confirm");
+    Formatp.add(CBFormat);
+    Formatp.add(FormatBtn);
 
 
     // load Settings
     try(FileReader reader = new FileReader("src/main/java/config.properties")){
-      
         Settings.load(reader);
     }
     catch(IOException e){
       System.out.print("Error trying to load Setting file");
     }
-  
-    // create GUI Elements
-    // add Layout p.setLayout(new BoxLayout());
+ 
+
+    // create GUI Elements for Path 
     JButton Confirmbtn = new JButton("Confirm");
     Pathp.add(DLpath);
     Pathp.add(Confirmbtn);
     
+
+    //add func to Confirm BTN
     Confirmbtn.addActionListener(new ActionListener(){
       @Override
       public void actionPerformed(ActionEvent e){
@@ -71,6 +71,7 @@ public class Setting{
         }
       }});
     
+    //add func to Confirm  BTN Format
     FormatBtn.addActionListener(new ActionListener(){
       @Override
       public void actionPerformed(ActionEvent e){

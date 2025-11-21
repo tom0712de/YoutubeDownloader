@@ -12,7 +12,13 @@ import com.github.felipeucelli.javatube.*;
 
 
 public class HomeScreen{
-     
+    // java.swing is bullshit
+    JPanel URlbar = new JPanel();
+    JPanel empty = new JPanel();
+    JPanel bottom = new JPanel();
+
+
+
     JCheckBox AudioCheck = new JCheckBox("only download Audio");
     JPanel p = new JPanel();
     boolean isAlive = true;
@@ -31,8 +37,8 @@ public class HomeScreen{
           yt.streams().getOnlyAudio().download(DLpath);
         }
         else{
-
-        yt.streams().getHighestResolution().download(DLpath);
+          yt.streams().getOnlyAudio().download(DLpath);
+          yt.streams().getHighestResolution().download(DLpath);
         }
 
     
@@ -55,7 +61,7 @@ public class HomeScreen{
                 }
             }
         });
-
+        
         p.add(DLbtn); 
         p.add(AudioCheck);
         p.add(URlinput);

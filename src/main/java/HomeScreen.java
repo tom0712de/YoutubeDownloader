@@ -12,7 +12,8 @@ import com.github.felipeucelli.javatube.*;
 
 
 public class HomeScreen{
-    
+     
+    JCheckBox AudioCheck = new JCheckBox("only download Audio");
     JPanel p = new JPanel();
     boolean isAlive = true;
     public Properties getSettings() throws Exception{ FileReader reader = new FileReader("src/main/java/config.properties");
@@ -20,13 +21,19 @@ public class HomeScreen{
         Settings.load(reader);
         return Settings;
     }
-    
+     
     public void Download(String videoURL) throws Exception{
+
+        
         Youtube yt = new Youtube(videoURL);
         String DLpath = getSettings().getProperty("DLpath");
-        //yt.streams().getHighestResolution().download(DLpath);
-        yt.streams().getOnlyAudio().download(DLpath);
-        
+      if(AudioCheck.isSelected()){
+          yt.streams().getOnlyAudio().download(DLpath);
+        }
+        else{
+
+        yt.streams().getHighestResolution().download(DLpath);
+        }
 
     
     }
@@ -35,7 +42,6 @@ public class HomeScreen{
         //alle Elemente werden deklariert 
         p.setLayout(new GridLayout(4,4));
         JButton DLbtn = new JButton("Download");  
-        JCheckBox PlaylistCheck = new JCheckBox("Download entire Playlist");
         JTextField URlinput = new JTextField(8);
 
         // Den Knöpfen werden Methoden zu gewiesen
@@ -51,7 +57,7 @@ public class HomeScreen{
         });
 
         p.add(DLbtn); 
-        p.add(PlaylistCheck);
+        p.add(AudioCheck);
         p.add(URlinput);
         
     }

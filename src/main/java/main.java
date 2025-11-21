@@ -3,9 +3,9 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class main{
-  
   public static void main(String[] args) throws Exception{
     JFrame mainFrame = new JFrame();
+    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //get The Homescreen Panel from Homescreen
     HomeScreen G = new HomeScreen();
     JPanel Homescreen = G.getPanel();
@@ -24,6 +24,7 @@ public class main{
                   mainFrame.add(S);
                   mainFrame.getContentPane().revalidate();
                   mainFrame.getContentPane().repaint();
+
                 } catch (Exception ex) {
                   System.out.println("Something went wrong trying to download ");
                 }
@@ -34,7 +35,7 @@ public class main{
 
     Homescreen.add(SettingBtn);
     mainFrame.add(Homescreen);
-    mainFrame.setSize(300,300);
+    mainFrame.setSize(3000,3000);
     mainFrame.show();
     }
   

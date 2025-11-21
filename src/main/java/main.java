@@ -15,7 +15,24 @@ public class main{
     //get Settings Panel
     Setting Stemp = new Setting();
     JPanel S = Stemp.getPanel();
+    JButton HomeBtn = new JButton("Go Home");
 
+
+    HomeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                  mainFrame.getContentPane().remove(S);
+                  mainFrame.add(Homescreen);
+                  mainFrame.getContentPane().revalidate();
+                  mainFrame.getContentPane().repaint();
+
+                } catch (Exception ex) {
+                  System.out.println("Something went wrong trying to download ");
+                }
+            }
+
+    });
     //Btn to switch to other menu
     JButton SettingBtn = new JButton("goSettingsprop");
     SettingBtn.addActionListener(new ActionListener() {
@@ -39,7 +56,7 @@ public class main{
     c.gridy = 3;
     c.gridx = 0;
     c.fill = GridBagConstraints.HORIZONTAL;
-    
+    S.add(HomeBtn); 
     Homescreen.add(SettingBtn,c);
     mainFrame.add(Homescreen);
     mainFrame.setSize(3000,3000);

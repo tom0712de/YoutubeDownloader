@@ -31,19 +31,26 @@ public class HomeScreen{
         
         String DLpath = getSettings().getProperty("DLpath");
         String Choice = getSettings().getProperty("Format");
-        if(Choice == "onlyAudio"){
+        if(Choice.equals("onlyAudio")){
           yt.streams().getOnlyAudio().download(DLpath);
+                  
+          System.out.println(Choice + DLpath);
         }
-        if(Choice == "360p audio and video"){
+        if(Choice.equals("360p audio and video")){
           yt.streams().getDefaultResolution().download(DLpath);
+
+          System.out.println(Choice + DLpath);
         }
-        if(Choice == "video and music speratly highest Quality"){
-        
+        if(Choice.equals("video and music seperatly highest Quality")){
+                
           yt.streams().getOnlyAudio().download(DLpath);
-          yt.streams().getHighestResolution().download(DLpath);
+          
+          Youtube ytz = new Youtube(videoURL);
+          ytz.streams().getHighestResolution().download(DLpath);
+          System.out.println(Choice + DLpath);
         }
         else{
-          System.out.print("TS broken FR");
+          System.out.print("TS broken FR"+Choice);
         }
     
     }

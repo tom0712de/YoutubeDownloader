@@ -7,7 +7,7 @@ import java.io.*;
 
 
 public class Setting{
-  
+
   JTextField DLpath = new JTextField(8);
   Properties Settings = new Properties();
   JPanel p = new JPanel();

@@ -2,6 +2,7 @@
 import java.awt.event.*;
 import javax.swing.*;
 
+import java.awt.*;
 public class main{
   public static void main(String[] args) throws Exception{
     JFrame mainFrame = new JFrame("Youtube Downloader");
@@ -9,7 +10,8 @@ public class main{
     //get The Homescreen Panel from Homescreen
     HomeScreen G = new HomeScreen();
     JPanel Homescreen = G.getPanel();
-    
+       
+    GridBagConstraints c = new GridBagConstraints();
     //get Settings Panel
     Setting Stemp = new Setting();
     JPanel S = Stemp.getPanel();
@@ -30,10 +32,15 @@ public class main{
                 }
             }
     });
+    c.weighty = 0.5;
 
+    c.anchor = GridBagConstraints.SOUTH;
+    c.ipadx = 50;
+    c.gridy = 3;
+    c.gridx = 0;
+    c.fill = GridBagConstraints.HORIZONTAL;
     
-
-    Homescreen.add(SettingBtn);
+    Homescreen.add(SettingBtn,c);
     mainFrame.add(Homescreen);
     mainFrame.setSize(3000,3000);
     mainFrame.show();

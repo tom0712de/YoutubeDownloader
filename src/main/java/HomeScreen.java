@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
-
+import java.awt.*;
 import java.awt.GridLayout;
 import java.awt.event.*;
 
@@ -13,11 +13,9 @@ import com.github.felipeucelli.javatube.*;
 
 public class HomeScreen{
     // java.swing is bullshit
-    JPanel URlbar = new JPanel();
-    JPanel empty = new JPanel();
-    JPanel bottom = new JPanel();
     JPanel p = new JPanel ();
-
+    GridBagConstraints c = new GridBagConstraints();
+    
 
     boolean isAlive = true;
     public Properties getSettings() throws Exception{ FileReader reader = new FileReader("src/main/java/config.properties");
@@ -52,9 +50,33 @@ public class HomeScreen{
 
     HomeScreen(){
         //alle Elemente werden deklariert 
-        p.setLayout(new GridLayout(4,4));
+        p.setLayout(new GridBagLayout());
         JButton DLbtn = new JButton("Download");  
         JTextField URlinput = new JTextField(8);
+        JLabel Label = new JLabel("Paste URL above");
+
+
+        //Swing magic
+        c.ipady = 50;
+        c.ipadx = 200;
+        c.gridy = 3;
+        c.gridx = 0;
+      
+        c.gridheight =5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        p.add(URlinput,c);
+        c.gridy = 4;
+        c.weightx = 0;
+        p.add(Label,c);
+        
+        
+        c.gridy = 3;
+        c.ipadx = 50;
+        c.gridx = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        p.add(DLbtn,c);
+
+
 
         // Den Knöpfen werden Methoden zu gewiesen
         DLbtn.addActionListener(new ActionListener() {
@@ -68,8 +90,8 @@ public class HomeScreen{
             }
         });
         
-        p.add(DLbtn); 
-        p.add(URlinput);
+        //p.add(DLbtn); 
+        //p.add(URlinput);
         
     }
     public JPanel getPanel(){

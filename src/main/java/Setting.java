@@ -10,13 +10,23 @@ import java.io.*;
 
 
 public class Setting{
-
+  
+  JTextField DLpath = new JTextField(8);
   Properties Settings = new Properties();
+  JPanel p = new JPanel();
+
+
+  //
+  public JPanel getPanel(){
+    return p; 
+  }
+
+
   public void saveSettings() throws Exception{
     try(FileWriter writer = new FileWriter("src/main/java/config.properties")){
       Settings.setProperty("DLpath", DLpath.getText());
      // add func to write to file writer.write(Settings);
-      p.store(writer,"");
+      Settings.store(writer,"");
 
     }catch(IOException e){
       System.out.println("error trying to save settings");
@@ -34,19 +44,17 @@ public class Setting{
     }
   
     // create GUI Elements
-    JPanel p = new JPanel();
-    JTextField DLpath = new JTextField(8);
     // add Layout p.setLayout(new BoxLayout());
     JButton Confirmbtn = new JButton("Confirm");
     p.add(DLpath);
     p.add(Confirmbtn);
     
-    DLpath.addActionListener(new ActionListener(){
-      @override
+    Confirmbtn.addActionListener(new ActionListener(){
+      @Override
       public void actionPerformed(ActionEvent e){
         try{
           saveSettings();
-        }catch(Exception e){
+        }catch(Exception IE){
           System.out.println("Error trying to save File");
         }
       }});

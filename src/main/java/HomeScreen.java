@@ -20,9 +20,7 @@ public class HomeScreen{
         Settings.load(reader);
         return Settings;
     }
-    public void Destroy() throws Exception{
-        isAlive = false;
-    }
+    
     public void Download(String videoURL) throws Exception{
         Youtube yt = new Youtube(videoURL);
         String DLpath = getSettings().getProperty("DLpath");
@@ -30,6 +28,7 @@ public class HomeScreen{
         yt.streams().getOnlyAudio().download(DLpath);
         
 
+    
     }
 
     HomeScreen(){
@@ -38,7 +37,6 @@ public class HomeScreen{
         JButton DLbtn = new JButton("Download");  
         JCheckBox PlaylistCheck = new JCheckBox("Download entire Playlist");
         JTextField URlinput = new JTextField(8);
-        JButton Settingsbtn = new JButton("GoSetting"); 
 
         // Den Knöpfen werden Methoden zu gewiesen
         DLbtn.addActionListener(new ActionListener() {
@@ -51,17 +49,7 @@ public class HomeScreen{
                 }
             }
         });
-        Settingsbtn.addActionListener(new ActonListener(){
-          @override
-            public void actioPerformed(ActionEvent e){
-              try{
-                Destroy();
-              }catch (Exeception e){
-                System.out.print("Error while going Setting");
-              }   
-        }});
 
-        p.add(Settingsbtn);
         p.add(DLbtn); 
         p.add(PlaylistCheck);
         p.add(URlinput);

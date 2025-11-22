@@ -49,14 +49,14 @@ public class main{
                 }
             }
     });
-    c.weighty = 0.5;
-
-    c.anchor = GridBagConstraints.SOUTH;
-    c.ipadx = 50;
     c.gridy = 3;
-    c.gridx = 0;
-    c.fill = GridBagConstraints.HORIZONTAL;
-    S.add(HomeBtn); 
+    c.ipadx = 150;
+    c.ipady =20;
+    c.insets = new Insets(100,0,0,0);
+    S.add(HomeBtn,c);
+
+    c.insets = new Insets(0,0,0,0);
+    c.gridy = 5;
     Homescreen.add(SettingBtn,c);
     mainFrame.add(Homescreen);
     mainFrame.setSize(3000,3000);

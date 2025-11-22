@@ -37,20 +37,20 @@ public class HomeScreen{
           System.out.println(Choice + DLpath);
         }
         if(Choice.equals("360p audio and video")){
-          yt.streams().getDefaultResolution().download(DLpath);
+          yt.streams().getDefaultResolution().download(DLpath,"musicFile.mp4");
 
           System.out.println(Choice + DLpath);
         }
         if(Choice.equals("video and music seperatly highest Quality")){
                 
-          yt.streams().getOnlyAudio().download(DLpath);
+          yt.streams().getOnlyAudio().download(DLpath,"music");
           
           Youtube ytz = new Youtube(videoURL);
-          ytz.streams().getHighestResolution().download(DLpath);
-          System.out.println(Choice + DLpath);
+          ytz.streams().getHighestResolution().download(DLpath,"video");
+          //System.out.println(Choice + DLpath+"herreee");
         }
         else{
-          System.out.print("TS broken FR"+Choice);
+          System.out.print("TS broken FR Wrong Format choice"+Choice);
         }
     
     }
@@ -68,10 +68,11 @@ public class HomeScreen{
         c.ipadx = 200;
         c.gridy = 3;
         c.gridx = 0;
-      
-        c.gridheight =5;
+
+        c.insets = new Insets(0,10,0,0); 
         c.fill = GridBagConstraints.HORIZONTAL;
         p.add(URlinput,c);
+        c.insets = new Insets(0,0,0,0); 
         c.gridy = 4;
         c.weightx = 0;
         p.add(Label,c);

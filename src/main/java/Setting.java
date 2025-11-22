@@ -1,5 +1,6 @@
 import java.awt.event.*; import java.util.Scanner;
 
+import java.awt.*;
 import javax.swing.*;
 
 import java.util.*;
@@ -11,13 +12,11 @@ public class Setting{
   JTextField DLpath = new JTextField(8);
   Properties Settings = new Properties();
   JPanel p = new JPanel();
-  JPanel Pathp = new JPanel();
-  
+  GridBagConstraints c = new GridBagConstraints();
   JPanel Formatp = new JPanel();
+
   //
   public JPanel getPanel(){
-    p.add(Pathp);
-    p.add(Formatp);
     return p; 
   }
 
@@ -35,12 +34,25 @@ public class Setting{
   public Setting(){
     
 
+    p.setLayout(new GridBagLayout());
     //Setup Format dropdown
     String [] Choices = {"360p audio and video","video and music seperatly highest Quality","onlyAudio"};
     JComboBox<String> CBFormat = new JComboBox(Choices);
     JButton FormatBtn = new JButton("confirm");
-    Formatp.add(CBFormat);
-    Formatp.add(FormatBtn);
+
+    
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.insets = new Insets(0,10,20,0);
+    c.gridy = 0;
+    c.gridx = 0;
+    c.ipadx = 200;
+    c.ipady = 50;
+    p.add(CBFormat,c);
+
+    c.gridx = 1;
+    c.ipadx = 50;
+    
+    p.add(FormatBtn,c);
 
 
     // load Settings
@@ -50,13 +62,19 @@ public class Setting{
     catch(IOException e){
       System.out.print("Error trying to load Setting file");
     }
- 
-
+    CBFormat.setSelectedItem(Settings.getProperty("Format"));
+    DLpath.setText(Settings.getProperty("DLpath"));
     // create GUI Elements for Path 
     JButton Confirmbtn = new JButton("Confirm");
-    Pathp.add(DLpath);
-    Pathp.add(Confirmbtn);
-    
+    c.gridy = 1;
+    c.gridx = 0;
+    c.ipadx = 200;
+    c.ipady = 50;
+    p.add(DLpath,c);
+
+    c.gridx = 1;
+    c.ipadx = 50;
+    p.add(Confirmbtn,c);
 
     //add func to Confirm BTN
     Confirmbtn.addActionListener(new ActionListener(){

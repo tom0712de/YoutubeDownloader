@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     implementation 'com.github.felipeucelli:javatube:-SNAPSHOT'
-	 
+	  implementation 'org.json:json:20231013' 
 }
 // Source - https://stackoverflow.com/a
 // Posted by Humberto Pinheiro, modified by community. See post 'Timeline' for change history

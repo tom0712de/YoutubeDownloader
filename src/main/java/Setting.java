@@ -32,7 +32,6 @@ public class Setting{
   } 
   
   public Setting(){
-    
 
     p.setLayout(new GridBagLayout());
     //Setup Format dropdown
@@ -74,8 +73,40 @@ public class Setting{
 
     c.gridx = 1;
     c.ipadx = 50;
-    p.add(Confirmbtn,c);
+    p.add(Confirmbtn,c); 
 
+    
+    //Setup is Playlist   
+    JCheckBox  isPlaylist = new JCheckBox("Download full Playlist");
+
+    isPlaylist.setSelected(Boolean.parseBoolean(Settings.getProperty("isPlaylist")));
+    c.gridx = 0;
+    c.gridy = 3;
+    c.ipadx = 50;
+    c.ipady = 50;
+    p.add(isPlaylist,c);
+    JButton ABtn = new JButton("Confirm");
+    
+    c.gridx = 1;
+    p.add(ABtn,c);
+    
+    ABtn.addActionListener(new ActionListener(){
+      @Override
+      public void actionPerformed(ActionEvent e){
+        try{
+          String temp;
+       if(isPlaylist.isSelected()){
+            temp = "true";
+          }else{
+            temp = "false";
+          }
+
+          Settings.setProperty("isPlaylist",temp);
+          saveSettings();
+        }catch(Exception IE){
+          System.out.println("Error trying to save File");
+        }
+      }});   
     //add func to Confirm BTN
     Confirmbtn.addActionListener(new ActionListener(){
       @Override

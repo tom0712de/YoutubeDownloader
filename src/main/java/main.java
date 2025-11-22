@@ -34,7 +34,7 @@ public class main{
 
     });
     //Btn to switch to other menu
-    JButton SettingBtn = new JButton("goSettingsprop");
+    JButton SettingBtn = new JButton("Go Settings");
     SettingBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,13 +49,13 @@ public class main{
                 }
             }
     });
-    c.gridy = 3;
+    c.gridy = 4;
     c.ipadx = 150;
     c.ipady =20;
     c.insets = new Insets(100,0,0,0);
     S.add(HomeBtn,c);
 
-    c.insets = new Insets(0,0,0,0);
+    c.insets = new Insets(100,0,0,0);
     c.gridy = 5;
     Homescreen.add(SettingBtn,c);
     mainFrame.add(Homescreen);

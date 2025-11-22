@@ -1,4 +1,4 @@
-import java.awt.event.*; import java.util.Scanner;
+import java.awt.event.*; 
 
 import java.awt.*;
 import javax.swing.*;

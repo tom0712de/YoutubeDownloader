@@ -29,7 +29,7 @@ public class main{
                   mainFrame.getContentPane().repaint();
 
                 } catch (Exception ex) {
-                  System.out.println("Something went wrong trying to download ");
+                  System.out.println("Something went wrong trying to go to homescreen");
                 }
             }
 
@@ -46,7 +46,7 @@ public class main{
                   mainFrame.getContentPane().repaint();
 
                 } catch (Exception ex) {
-                  System.out.println("Something went wrong trying to download ");
+                  System.out.println("Something went wrong trying to acces Settings ");
                 }
             }
     });

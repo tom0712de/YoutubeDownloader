@@ -103,7 +103,9 @@ public class HomeScreen{
                       System.out.println("No Playlista");
                     }
                   }else{
-                    Download(URlinput.getText());
+                    Dlthread t = new Dlthread(URlinput.getText(),getSettings());
+                    t.start();
+                    //              Download(URlinput.getText());
                   }
                 } catch (Exception ex) {
                   System.out.println("Something went wrong trying to download ");

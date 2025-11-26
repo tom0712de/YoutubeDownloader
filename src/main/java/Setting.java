@@ -9,6 +9,9 @@ import java.io.*;
 
 public class Setting{
 
+  JCheckBox  isPlaylist = new JCheckBox("Download full Playlist");
+  String [] Choices = {"360p audio and video","video and music seperatly highest Quality","onlyAudio"};
+  JComboBox<String> CBFormat = new JComboBox(Choices);
   JTextField DLpath = new JTextField(8);
   Properties Settings = new Properties();
   JPanel p = new JPanel();
@@ -17,6 +20,7 @@ public class Setting{
 
   //
   public JPanel getPanel(){
+    syncSettings();
     return p; 
   }
 
@@ -29,14 +33,19 @@ public class Setting{
     }catch(IOException e){
       System.out.println("error trying to save settings");
     }
-  } 
-  
+  }
+  //add method for syncing settings with file
+  public void syncSettings(){
+    System.out.print(Boolean.parseBoolean(Settings.getProperty("isPlaylist")));
+    isPlaylist.setSelected(Boolean.parseBoolean(Settings.getProperty("isPlaylist")));
+    CBFormat.setSelectedItem(Settings.getProperty("Format"));
+    DLpath.setText(Settings.getProperty("DLpath"));
+    System.out.println("SettingsSynceld");
+    }
   public Setting(){
 
     p.setLayout(new GridBagLayout());
     //Setup Format dropdown
-    String [] Choices = {"360p audio and video","video and music seperatly highest Quality","onlyAudio"};
-    JComboBox<String> CBFormat = new JComboBox(Choices);
     JButton FormatBtn = new JButton("confirm");
 
     
@@ -77,7 +86,6 @@ public class Setting{
 
     
     //Setup is Playlist   
-    JCheckBox  isPlaylist = new JCheckBox("Download full Playlist");
 
     isPlaylist.setSelected(Boolean.parseBoolean(Settings.getProperty("isPlaylist")));
     c.gridx = 0;

@@ -6,10 +6,6 @@ import java.awt.event.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.github.felipeucelli.javatube.StreamQuery;
-import com.github.felipeucelli.javatube.Youtube;
-
 import com.github.felipeucelli.javatube.*;
 
 
@@ -19,50 +15,46 @@ public class HomeScreen{
     GridBagConstraints c = new GridBagConstraints();
         
     boolean isAlive = true;
+    
+//function to get Settings from the File
     public Properties getSettings() throws Exception{ FileReader reader = new FileReader("src/main/java/config.properties");
         Properties Settings = new Properties();
         Settings.load(reader);
         return Settings;
     }
+
+
+//func to Download
     public void Download(String videoURL) throws Exception{
-
-
-
-
         Youtube yt = new Youtube(videoURL);
         
         String DLpath = getSettings().getProperty("DLpath");
         String Choice = getSettings().getProperty("Format");
+        System.out.println(DLpath);
+        
+
         if(Choice.equals("onlyAudio")){
           yt.streams().getOnlyAudio().download(DLpath);
                   
-          System.out.println(Choice + DLpath);
         }
         if(Choice.equals("360p audio and video")){
           yt.streams().getDefaultResolution().download(DLpath,"musicFile.mp4");
 
-          System.out.println(Choice + DLpath);
         }
         if(Choice.equals("video and music seperatly highest Quality")){
                 
-          yt.streams().getOnlyAudio().download(DLpath,"music");
           
           Youtube ytz = new Youtube(videoURL);
           ytz.streams().getHighestResolution().download(DLpath,"video");
-          //System.out.println(Choice + DLpath+"herreee");
         }
         else{
           System.out.print("TS broken FR Wrong Format choice"+Choice);
         }
-
-
-
-
-    
     }
 
-    HomeScreen(){
-        //alle Elemente werden deklariert 
+
+    HomeScreen(){  //Constructer 
+      //Gui Elemente 
         p.setLayout(new GridBagLayout());
         JButton DLbtn = new JButton("Download");  
         JTextField URlinput = new JTextField(8);
@@ -74,15 +66,13 @@ public class HomeScreen{
         c.ipadx = 200;
         c.gridy = 3;
         c.gridx = 0;
-
         c.insets = new Insets(0,10,0,0); 
         c.fill = GridBagConstraints.HORIZONTAL;
         p.add(URlinput,c);
+
         c.insets = new Insets(0,0,0,0); 
-        
         c.gridy = 4;
         p.add(Label,c);
-        
         
         c.gridy = 3;
         c.ipadx = 50;
@@ -93,6 +83,8 @@ public class HomeScreen{
 
 
         // Den Knöpfen werden Methoden zu gewiesen
+        
+        //Download BTn
         DLbtn.addActionListener(new ActionListener()  {
             @Override
             public void actionPerformed(ActionEvent e)  {
@@ -102,9 +94,9 @@ public class HomeScreen{
                   if(isPlayList){ // value is wrong boolean parse prolly bs
                     System.out.println("trying to download playlist");
                     try{
-                      ArrayList<String> arr = new Playlist("https://www.youtube.com/playlist?list=PLS1QulWo1RIbfTjQvTdj8Y6yyq4R7g-Al").getVideos();
+                      ArrayList<String> arr = new Playlist(URlinput.getText()).getVideos();
                       for(int i = 0;i<arr.size();i++){
-                        Download(arr.get(0));
+                        Download(arr.get(i));
                       }
                     }
                     catch(Exception Es){
@@ -119,9 +111,7 @@ public class HomeScreen{
                 }
               }
         );
-        
-        //p.add(DLbtn); 
-        //p.add(URlinput);
+       //[{{{{)         
         
     }
     public JPanel getPanel(){

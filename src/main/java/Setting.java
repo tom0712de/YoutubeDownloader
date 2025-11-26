@@ -137,10 +137,7 @@ public class Setting{
           Settings.setProperty("Format",t);
           saveSettings();
         }catch(Exception IE){
-          System.out.println("Error trying to save File");
+          System.out.println("Error Trying to change format");  
         }
       }});
-    
-    
-  } 
-} 
+  }}

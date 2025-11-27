@@ -13,7 +13,7 @@ public class HomeScreen{
     // java.swing is bullshit
     JPanel p = new JPanel ();
     GridBagConstraints c = new GridBagConstraints();
-        
+    int maxThread = 4; 
     boolean isAlive = true;
     
 //function to get Settings from the File
@@ -89,14 +89,37 @@ public class HomeScreen{
             @Override
             public void actionPerformed(ActionEvent e)  {
                 try{
-
+                  JLabel DLlabel = new JLabel("Download Finished");
+                  p.add(DLlabel);
+                  p.revalidate();
+                  p.repaint();
                   boolean isPlayList = Boolean.parseBoolean(getSettings().getProperty("isPlaylist"));
                   if(isPlayList){ // value is wrong boolean parse prolly bs
                     System.out.println("trying to download playlist");
                     try{
+                      int i = 0;
+                      
+                      ArrayList<Dlthread> tarr = new ArrayList<Dlthread>();
                       ArrayList<String> arr = new Playlist(URlinput.getText()).getVideos();
-                      for(int i = 0;i<arr.size();i++){
-                        Download(arr.get(i));
+                      while(i< arr.size()){ //potenital loop
+                        for (int it = 0; it<tarr.size();it ++){
+                          if(!tarr.get(it).isAlive()){
+                            tarr.remove(it);
+                            System.out.println("kill thread" + it);
+                          }
+                        }
+                        if(tarr.size()< maxThread){
+                        i++; 
+                        Dlthread t = new Dlthread(arr.get(i),getSettings());
+                        System.out.println("Created THread" +i );
+                        tarr.add(t);
+
+                        t.start(); 
+                        }else{
+                          
+                        }
+                          
+                        //Download(arr.get(i));
                       }
                     }
                     catch(Exception Es){

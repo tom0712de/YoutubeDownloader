@@ -8,7 +8,8 @@ import java.io.*;
 
 
 public class Setting{
-
+  JTextField maxThread = new JTextField();
+  JButton threadBtn = new JButton("Confirm");
   JCheckBox  isPlaylist = new JCheckBox("Download full Playlist");
   String [] Choices = {"360p audio and video","video and music seperatly highest Quality","onlyAudio"};
   JComboBox<String> CBFormat = new JComboBox(Choices);
@@ -23,7 +24,6 @@ public class Setting{
     syncSettings();
     return p; 
   }
-
 
   public void saveSettings() throws Exception{
     try(FileWriter writer = new FileWriter("src/main/java/config.properties")){
@@ -40,6 +40,8 @@ public class Setting{
     isPlaylist.setSelected(Boolean.parseBoolean(Settings.getProperty("isPlaylist")));
     CBFormat.setSelectedItem(Settings.getProperty("Format"));
     DLpath.setText(Settings.getProperty("DLpath"));
+
+    maxThread.setText(Settings.getProperty("maxThread"));
     System.out.println("SettingsSynceld");
     }
   public Setting(){
@@ -83,8 +85,15 @@ public class Setting{
     c.gridx = 1;
     c.ipadx = 50;
     p.add(Confirmbtn,c); 
-
     
+    c.gridx = 0;
+    c.gridy = 4;
+    c.ipadx = 50;
+    p.add(maxThread,c);
+    c.gridx=1;
+    c.ipadx = 50;
+    p.add(threadBtn,c);
+
     //Setup is Playlist   
 
     isPlaylist.setSelected(Boolean.parseBoolean(Settings.getProperty("isPlaylist")));
@@ -97,6 +106,7 @@ public class Setting{
     
     c.gridx = 1;
     p.add(ABtn,c);
+    
     
     ABtn.addActionListener(new ActionListener(){
       @Override
@@ -128,6 +138,20 @@ public class Setting{
         }
       }});
     
+   
+   threadBtn.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+          try{
+
+            Settings.setProperty("maxThread",maxThread.getText());
+            saveSettings();
+          }catch(Exception IE){
+            System.out.println("Error trying to save File");
+          }
+        }});
+      
+
     //add func to Confirm  BTN Format
     FormatBtn.addActionListener(new ActionListener(){
       @Override

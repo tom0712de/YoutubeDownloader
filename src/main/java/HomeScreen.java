@@ -108,7 +108,7 @@ public class HomeScreen{
                             System.out.println("kill thread" + it);
                           }
                         }
-                        if(tarr.size()< maxThread){
+                        if(tarr.size()< Integer.parseInt(getSettings().getProperty("maxThread"))){
                         i++; 
                         Dlthread t = new Dlthread(arr.get(i),getSettings());
                         System.out.println("Created THread" +i );

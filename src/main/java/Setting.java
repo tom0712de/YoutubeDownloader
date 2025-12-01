@@ -131,7 +131,7 @@ public class Setting{
       public void actionPerformed(ActionEvent e){
         try{
 
-          Settings.setProperty("DLpath", DLpath.getText());
+          Settings.setProperty("DLpath", DLpath.getText() + "/" );
           saveSettings();
         }catch(Exception IE){
           System.out.println("Error trying to save File");

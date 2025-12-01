@@ -6,7 +6,7 @@ public class main{
   
 
    public  static JPanel getSettings(GridBagConstraints c, JButton HomeBtn,Setting Stemp){
-      c.gridy = 4;
+      c.gridy = 5;
       c.ipadx = 150;
       c.ipady =20;
       c.insets = new Insets(100,0,0,0);

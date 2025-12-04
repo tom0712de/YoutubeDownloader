@@ -1,17 +1,23 @@
+# Readme
+## Youtube Downloader ist eine Java Application, die es ermöglicht leicht Video von Youtube runterzuladen
 # Features
 
-## YouTube Video Download
-Download any single YouTube video by simply providing its URL. The application processes the link and retrieves the video in the desired quality and format.
+- Verschiedene Formate (360p,Audio only, Höchst mögliche Auflösung)
+- Komplette Playlist mit nur einer Eingabe runterladen
+- Durch Multithreading können bei dem Dowloaden einer Playlist mehrere Video auf verschiedenen Threads runtergeladen werden
+- Settings werden gespeichert
+# Nutzer Anleitung
 
-## Playlist Download
-Easily download full YouTube playlists. Just input the playlist URL, and the application will fetch and download all videos in the list sequentially.
+- Als erstes muss in den Settings der Ziel Path für die Downloads festgelegt werden(/home/user/dir)
+- Falls eine Playlist heruntergeladen werden soll, muss der entsprechende Haken gesetzt werden
+- Nach dem alles konfiguriert ist muss der Link zu dem Youtube Video oder der Playlist in das TextFeld auf dem Hauptmenü eingefügt werden.
 
-## Multiple Video Formats
-Choose from a variety of popular video formats such as MP4, WEBM, MKV, and more, depending on your needs and device compatibility.
+# Sonstige Infos
+Der von uns geschriebene Code befindet sich in src/main/java
 
-## User-Friendly Graphical Interface (GUI)
-Intuitive and clean GUI design makes it simple for users of all levels to operate the application without needing command-line knowledge. 
-Slick and modern look using java Swing library.
+zum bauen des Projekts kann der Command ./gradlew build ausgeführt werden
 
-## Fast and Reliable
-Optimized downloading process ensures quick retrieval of videos while maintaining high-quality output.
+oder zum testen ./gradlew run
+
+Dafür muss Gradle und java installiert sein
+Außerdem ist in diesem Ordner noch eine Jar

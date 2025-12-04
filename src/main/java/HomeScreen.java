@@ -48,7 +48,7 @@ public class HomeScreen{
           ytz.streams().getHighestResolution().download(DLpath,"video");
         }
         else{
-          System.out.print("TS broken FR Wrong Format choice"+Choice);
+          System.out.print("Something went wrong trying to Download"+Choice);
         }
     }
 
